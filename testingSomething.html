@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="testingSomething.css">
+    </head>
+        <body>
+            <div id="wholeContainer" class="container">
+                <!--inner html = canvas and in canvas the function to draw x or o gets called-->
+                <div id="div1" class="grid" onclick='show(1)'>this is the div</div>
+                <div id="div2" class="grid" onclick='show(2)'>this is the div 2 show</div>
+                <div id="div3" class="grid" onclick='show(3)'>this is the 3</div>
+                <div id="div4" class="grid" onclick='show(4)'>this is the show4</div>
+                <div id="div5" class="grid" onclick='show(5)'>this is the div</div>
+                <div id="div6" class="grid" onclick='show(6)'>this is the div</div>
+                <div id="div7" class="grid" onclick='show(7)'>this is the div</div>
+                <div id="div8" class="grid" onclick='show(8)'>this is the div</div>
+                <div id="div9" class="grid" onclick='show(9)'>this is the div</div> 
+            </div>
+            <img id="image" src="" />  
+            <script>
+                let playerBool = true; // X = TRUE, O = FALSE!
+
+                let idList = [
+                    1: "div1"
+                ];
+
+                function show() {
+                    if (playerBool) {
+                        document.getElementById('div1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
+
+                    }
+                }
+
+                //call x or o drawing function in innerHTML
+                document.getElementById('grid1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
+            </script>
+        </body>
+</html>
