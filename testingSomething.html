@@ -20,19 +20,22 @@
             <script>
                 let playerBool = true; // X = TRUE, O = FALSE!
 
-                let idList = [
-                    1: "div1"
-                ];
+                function show(index) {
+                    let insertion = '<img src="/circle.png">'
+                    let box = document.getElementById('div' + index);
 
-                function show() {
                     if (playerBool) {
-                        document.getElementById('div1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
-
+                        box.innerHTML += '<img src="red_x.png">'
+                    } else {
+                        box.innerHTML += '<img src="circle.png">'
                     }
+
+                    box.classList.add('clicked')
+                    playerBool = !playerBool;
                 }
 
                 //call x or o drawing function in innerHTML
-                document.getElementById('grid1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
+                //document.getElementById('grid1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
             </script>
         </body>
 </html>
