@@ -3,38 +3,34 @@
     <head>
         <link rel="stylesheet" href="testingSomething.css">
     </head>
-        <body>
-            <div id="wholeContainer" class="container">
-                <!--inner html = canvas and in canvas the function to draw x or o gets called-->
-                <div id="div1" class="grid" onclick='show(1)'>this is the div</div>
-                <div id="div2" class="grid" onclick='show(2)'>this is the div 2 show</div>
-                <div id="div3" class="grid" onclick='show(3)'>this is the 3</div>
-                <div id="div4" class="grid" onclick='show(4)'>this is the show4</div>
-                <div id="div5" class="grid" onclick='show(5)'>this is the div</div>
-                <div id="div6" class="grid" onclick='show(6)'>this is the div</div>
-                <div id="div7" class="grid" onclick='show(7)'>this is the div</div>
-                <div id="div8" class="grid" onclick='show(8)'>this is the div</div>
-                <div id="div9" class="grid" onclick='show(9)'>this is the div</div> 
-            </div>
-            <img id="image" src="" />  
-            <script>
-                let playerBool = true; // X = TRUE, O = FALSE!
+    <body>
+        <div id="wholeContainer" class="container"></div>
+        <script>
+            let playerBool = true; // X = TRUE, O = FALSE!
 
-                function show(index) {
-                    let box = document.getElementById('div' + index);
+            let wholeContainer = document.getElementById('wholeContainer');
 
-                    if (playerBool) {
-                        box.innerHTML += '<img src="red_x.png">'
-                    } else {
-                        box.innerHTML += '<img src="circle.png">'
-                    }
+            for (let i = 0; i < 9; i++) {
+                console.log(i);
+                wholeContainer.innerHTML += "<div id='div"+i+"' class='grid' onclick='show("+i+")'>hi im awesome</div>";
+            }
 
-                    box.classList.add('clicked')
-                    playerBool = !playerBool;
+            function show(index) {
+                let box = document.getElementById('div' + index);
+
+                if (playerBool) {
+                    box.innerHTML += '<img src="red_x.png">'
+                } else {
+                    box.innerHTML += '<img src="circle.png">'
                 }
 
-                //call x or o drawing function in innerHTML
-                //document.getElementById('grid1').innerHTML += '<canvas id="canvas1" width="50" height="50"></canvas>'
-            </script>
-        </body>
+                box.classList.add('clicked')
+                playerBool = !playerBool;
+            }
+
+            function check_move() {
+                return
+            }
+        </script>
+    </body>
 </html>
