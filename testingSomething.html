@@ -9,14 +9,17 @@
             let playerBool = true; // X = TRUE, O = FALSE!
 
             let wholeContainer = document.getElementById('wholeContainer');
-
             for (let i = 0; i < 9; i++) {
                 console.log(i);
-                wholeContainer.innerHTML += "<div id='div"+i+"' class='grid' onclick='show("+i+")'></div>";
+                wholeContainer.innerHTML += "<div id='"+i+"' class='grid' onclick='show("+i+")'></div>";
             }
 
             function show(index) {
-                let box = document.getElementById('div' + index);
+                let box = document.getElementById(index);
+
+                if (box.classList.contains('true') || box.classList.contains('false')) {
+                    return
+                }
 
                 if (playerBool) {
                     box.innerHTML += '<img src="red_x.png">'
@@ -24,12 +27,23 @@
                     box.innerHTML += '<img src="circle.png">'
                 }
 
-                box.classList.add('clicked')
+                box.classList.add(playerBool)
                 playerBool = !playerBool;
+
+                let player_has_won = check_move();
             }
 
             function check_move() {
-                return
+                let boxes = wholeContainer.querySelectorAll('*');
+
+                //boxes[0].classList
+                //boxes[0].id
+                
+                if (boxes[0].classList[1] == boxes[1].classList[1]) {
+                    console.log("YOU WIN!")
+                }
+
+                return false
             }
         </script>
     </body>
