@@ -5,8 +5,13 @@
     </head>
     <body>
         <div id="wholeContainer" class="container"></div>
+        
         <script>
             let playerBool = true; // X = TRUE, O = FALSE!
+            let playerImages = [
+                '<img src="red_x.png">',
+                '<img src="circle.png">'
+            ]
 
             let wholeContainer = document.getElementById('wholeContainer');
             for (let i = 0; i < 9; i++) {
@@ -21,29 +26,49 @@
                     return
                 }
 
-                if (playerBool) {
-                    box.innerHTML += '<img src="red_x.png">'
-                } else {
-                    box.innerHTML += '<img src="circle.png">'
-                }
+                box.innerHTML += playerImages[+!playerBool]
 
-                box.classList.add(playerBool)
+                box.classList.add(playerBool);
                 playerBool = !playerBool;
 
-                let player_has_won = check_move();
+                let winningPlayer = checkMove();
+
+                let winText = box.innerHTML + `<h1>PLAYER ${winningPlayer ? "x" : "o"} WON!</h1>`
+                if (winningPlayer != null) {
+                    wholeContainer.innerHTML = winText;
+                }
             }
 
-            function check_move() {
+            function checkMove() {
                 let boxes = wholeContainer.querySelectorAll('*');
 
                 //boxes[0].classList
                 //boxes[0].id
-                
-                if (boxes[0].classList[1] == boxes[1].classList[1]) {
-                    console.log("YOU WIN!")
-                }
 
-                return false
+                let magicSquareArray = [
+                    4, 9, 2,
+                    3, 5, 7,
+                    8, 1, 6
+                ];
+
+                let totals = [0, 0];
+                boxes.forEach(box => {
+                    if (box.classList.contains('true')) {
+                        totals[0] += magicSquareArray[box.id];
+                    }
+                    if (box.classList.contains('false')) {
+                        totals[1] += magicSquareArray[box.id];
+                    }
+                });
+
+                console.log(totals);
+
+                if (totals[0] == 15) {
+                    return true
+                }
+                if (totals[1] == 15) {
+                    return false
+                }
             }
         </script>
     </body>
